@@ -9,18 +9,14 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    static{
-        System.loadLibrary("signed_div");
-    }
-
-    public native String getMessage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         TextView textView = new TextView(this);
-        textView.setText(getMessage());
+        String return_string = java_jni_interface.get_jni_string();
+        textView.setText(return_string);
 
         setContentView(textView);
     }
